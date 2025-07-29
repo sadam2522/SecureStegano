@@ -14,11 +14,6 @@ StegoSecure adalah aplikasi berbasis web yang menggabungkan **kriptografi** dan 
 
 ---
 
-## 📷 Tampilan Antarmuka
-
-![Preview UI](preview_ui.png)
-
----
 
 ## 🧰 Teknologi yang Digunakan
 
@@ -29,6 +24,4 @@ StegoSecure adalah aplikasi berbasis web yang menggabungkan **kriptografi** dan 
 - HTML & CSS (Frontend)
 
 ---
-
-## 📁 Struktur Folder
 
