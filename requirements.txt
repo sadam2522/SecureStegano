@@ -1,0 +1,4 @@
+cryptography
+pillow
+numpy
+flask
