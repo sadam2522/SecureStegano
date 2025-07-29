@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasil Dekripsi | SecureStegano</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4361ee;
+      --primary-dark: #3a56d4;
+      --success-color: #4cc9f0;
+      --info-color: #4895ef;
+      --warning-color: #f8961e;
+      --dark-color: #2b2d42;
+      --light-color: #f8f9fa;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-color);
+    }
+    .result-header {
+      color: var(--success-color);
+      font-size: 4rem;
+    }
+    .result-card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    .card-header {
+      background: linear-gradient(135deg, var(--success-color) 0%, var(--info-color) 100%);
+      color: white;
+      padding: 1.5rem;
+    }
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+    }
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      border-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+    }
+    .message-box {
+      background-color: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--info-color);
+      font-size: 1.1rem;
+    }
+    .security-badge {
+      background-color: rgba(76, 201, 240, 0.1);
+      color: var(--success-color);
+      border: 1px solid var(--success-color);
+    }
+    .detail-item {
+      border-bottom: 1px solid #eee;
+      padding: 1rem 0;
+    }
+    .detail-item:last-child {
+      border-bottom: none;
+    }
+    .copy-btn {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .copy-btn:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">
+        <i class="bi bi-shield-lock me-2"></i>SecureStegano
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/"><i class="bi bi-house-door me-1"></i> Beranda</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card result-card">
+          <div class="card-header text-center">
+            <div class="result-header mb-3">
+              <i class="bi bi-file-earmark-break"></i>
+            </div>
+            <h2 class="fw-bold mb-2 text-white">Pesan Berhasil Didekripsi!</h2>
+            <p class="text-white mb-0">Pesan rahasia telah diverifikasi dan aman</p>
+          </div>
+
+          
+          <div class="card-body p-4 p-md-5">
+            <div class="row mb-4">
+              <!-- 
+              <div class="col-md-6 mb-3 mb-md-0">
+                <h5 class="fw-bold mb-3"><i class="bi bi-key me-2"></i>Kunci yang Digunakan</h5>
+                <div class="p-3 bg-light rounded position-relative">
+                  <span id="usedKey">{{ key_used }}</span>
+                  <button class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-1 copy-btn" 
+                          onclick="copyToClipboard('usedKey')"
+                          title="Salin kunci">
+                    <i class="bi bi-clipboard"></i>
+                  </button> 
+                </div>
+              </div> -->
+
+              <!-- 
+              <div class="col-md-6">
+                <h5 class="fw-bold mb-3"><i class="bi bi-clock-history me-2"></i>Waktu Ekstraksi</h5>
+                <div class="p-3 bg-light rounded">
+                  {{ timestamp }}
+                </div>
+              </div>
+            </div> -->  
+
+            <div class="mb-4">
+              <h5 class="fw-bold mb-3"><i class="bi bi-chat-square-text me-2"></i>Pesan Rahasia</h5>
+              <div class="message-box mb-3 position-relative">
+                <div class="d-flex align-items-start">
+                  <i class="bi bi-quote fs-1 me-3" style="color: var(--info-color);"></i>
+                  <div id="secretMessage">{{ message }}</div>
+                </div>
+                <button class="btn btn-sm btn-outline-secondary position-absolute top-0 end-0 m-1 copy-btn" 
+                        onclick="copyToClipboard('secretMessage')"
+                        title="Salin pesan">
+                  <i class="bi bi-clipboard"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h5 class="fw-bold mb-3"><i class="bi bi-shield-check me-2"></i>Detail Keamanan</h5>
+              <div class="bg-light rounded p-3">
+                <div class="detail-item d-flex justify-content-between">
+                  <span><i class="bi bi-lock me-2"></i>Metode Enkripsi</span>
+                  <span class="fw-semibold">AES-256 (PBKDF2)</span>
+                </div>
+                <div class="detail-item d-flex justify-content-between">
+                  <span><i class="bi bi-file-check me-2"></i>Integritas Pesan</span>
+                  <span class="badge security-badge">
+                    <i class="bi bi-check-circle me-1"></i>Terverifikasi
+                  </span>
+                </div>
+                <div class="detail-item d-flex justify-content-between">
+                  <span><i class="bi bi-clock me-2"></i>Durasi Proses</span>
+                  <span class="fw-semibold">{{ processing_time }}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-success mt-4">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-shield-lock fs-3 me-3"></i>
+                <div>
+                  <h6 class="alert-heading mb-1">Dekripsi Berhasil</h6>
+                  <p class="mb-0 small">Pesan ini hanya bisa dibuka dengan kunci yang benar dan tidak mengalami perubahan selama transmisi.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4">
+              <a href="/" class="btn btn-primary px-4">
+                <i class="bi bi-arrow-left me-2"></i>Kembali ke Beranda
+              </a>
+              <a href="/embed" class="btn btn-outline-secondary px-4">
+                <i class="bi bi-file-earmark-lock me-2"></i>Sisipkan Pesan Baru
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-4 mt-5">
+    <div class="container text-center">
+      <p class="mb-0 small">&copy; 2025 SecureStegano. Sadam Muhammad Natzir.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Fungsi untuk copy teks ke clipboard
+    function copyToClipboard(elementId) {
+      const element = document.getElementById(elementId);
+      const text = element.innerText;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = element.parentElement.querySelector('.copy-btn');
+        btn.innerHTML = '<i class="bi bi-check"></i>';
+        btn.classList.remove('btn-outline-secondary');
+        btn.classList.add('btn-success');
+        
+        setTimeout(() => {
+          btn.innerHTML = '<i class="bi bi-clipboard"></i>';
+          btn.classList.remove('btn-success');
+          btn.classList.add('btn-outline-secondary');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
